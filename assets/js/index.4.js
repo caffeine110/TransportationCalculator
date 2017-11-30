@@ -33,11 +33,11 @@ $(document).ready(function() {
         /***** extra for ep e3 */
         $('.row_hider_ep3_no').css("display","none");
         
-         hide_element_row_hider2 = function() {
+         hide_element_row_hider3 = function() {
              $('.row_hider').css("display","none");
              $('.row_hider_ep3_no').css("display","");
          }
-         show_element_row_hider2 = function() {
+         show_element_row_hider3 = function() {
              $('.row_hider').css("display","");
              $('.row_hider_ep3_no').css("display","none");
          }
@@ -46,11 +46,11 @@ $(document).ready(function() {
         /***** extra for ep e4 */
         $('.row_hider_ep4_no').css("display","none");
         
-         hide_element_row_hider2 = function() {
+         hide_element_row_hider4 = function() {
              $('.row_hider').css("display","none");
              $('.row_hider_ep4_no').css("display","");
          }
-         show_element_row_hider2 = function() {
+         show_element_row_hider4 = function() {
              $('.row_hider').css("display","");
              $('.row_hider_ep4_no').css("display","none");
          }
@@ -117,14 +117,14 @@ $(document).ready(function() {
     
     function calculate_super_elivation() {
 
-        v = document.getElementById("fourth_velocity_one").value;
-        r = document.getElementById("fourth_radius_one").value;
+        var v = document.getElementById("fourth_velocity_one").value;
+        var r = document.getElementById("fourth_radius_one").value;
 
         v = parseFloat(v);
         r = parseFloat(r);
         
         var u = 0.15 ;
-        var z1 = (v*v)/( 127*r ) - u ;
+        var z1 = (v*v) / ( 127*r ) - u ;
 
         var z2 = ( v * v ) / ( 127 * r ) ;
 
@@ -141,10 +141,10 @@ $(document).ready(function() {
     
     function calculate_extra_winding_of_road() {
         
-        v = document.getElementById("fourth_velocity_two").value;
-        r = document.getElementById("fourth_radius_two").value;
-        n = document.getElementById("fourth_lanes_two").value;
-        l = document.getElementById("fourth_length_two").value;
+        var v = document.getElementById("fourth_velocity_two").value;
+        var r = document.getElementById("fourth_radius_two").value;
+        var n = document.getElementById("fourth_lanes_two").value;
+        var l = document.getElementById("fourth_length_two").value;
     
         v = parseFloat(v);
         r = parseFloat(r);
@@ -163,44 +163,52 @@ $(document).ready(function() {
 
     function calculate_set_back_distance() {
         
-        v = document.getElementById("fourth_velocity_three").value;
-        r = document.getElementById("fourth_ssd_three").value;
-        r = document.getElementById("fourth_radius_three").value;
+        var v = document.getElementById("fourth_velocity_three").value;
+        var ssd = document.getElementById("fourth_ssd_three").value;
+        var r = document.getElementById("fourth_radius_three").value;
         
         v = parseFloat(v);
         r = parseFloat(r);
         r = parseFloat(r);
         
-        if ()
+        if ( l > ssd ){
+            var z1 = ( ssd * ssd ) / ( 8* r) ;
+        }
+        else if ( l < ssd ){
+            var z2 = ( l * ( 25 - l ) ) / ( 8*r ) ;
+        }
+        else {
+            var str="Please Enter the Proper values : ";
+        }
 
 
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
-                
-        document.getElementById("result_of_extra_winding_of_road").innerHTML ="extra winding of road  is : "+ z1+z2+z3+z4 +" m.";
         
+        if ( l > ssd ) {
+            document.getElementById("result_of_set_back_distance").innerHTML ="Set back Distance is : "+ z1 +" m.";            
+        }
+        else if ( l < ssd ) {
+            document.getElementById("result_of_set_back_distance").innerHTML ="Set back distance is : "+ z2 +" m.";            
+        }
+        else {
+            document.getElementById("result_of_set_back_distance").innerHTML =" "+ str ;                        
+        }        
     }
 
     function calculate_calculate_curve_resistance() {
 
-        r = document.getElementById("reaction-two").value;
-        l = document.getElementById("length-two").value;
-        a = document.getElementById("acceleration-two").value;
-        v1 = document.getElementById("velocity_rev").value;
+        var t = document.getElementById("fourth_tractive_forse_four").value;
+        var a = document.getElementById("fourth_turing_angle_four").value;
         
         
-        v = parseFloat(v);
-        l = parseFloat(l);
-        a = parseFloat(a);
-        v1 = parseFloat(v1);
+        t = parseFloat(t);
+        a = parseInt(a);
         
-        var z1 = 0.278 * v * r ;
-        var z2 = 2 * (( 0.2 * v) + l ) ;
-        var z3 = 0.278 * v * Math.sqrt(45/a) ;
-        var z4 = 0.278 * v1 * (Math.sqrt(45/a)) ;
+        var z1 = t * ( 1- Math.cos(a) );
     
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
         
-        document.getElementById("result_of_two_way").innerHTML ="Overtaking sight distance of Two way vehical is : "+ z1+z2+z3+z4 +" m.";
+        document.getElementById("result_of_curve_resisrance").innerHTML ="Curve Resistance is : "+ z1 +" m.";
     }
