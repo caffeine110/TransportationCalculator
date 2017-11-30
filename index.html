@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <td>
-                   1. Basic Elements Of Highway Geometric Design :
+                   A). Basic Elements Of Highway Geometric Design :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('first')">Find It</button>
@@ -50,7 +50,7 @@
             </tr>
             <tr>
                 <td>
-                2. Safe straight Distance : :
+                B). Safe straight Distance : :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('second')">Find It</button>
@@ -58,7 +58,7 @@
             </tr>
             <tr>
                 <td>
-                3. Overtaking Sight Distance :
+                C). Overtaking Sight Distance :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('third')">Find It</button>
@@ -66,12 +66,30 @@
             </tr>
             <tr>
                 <td>
-                4. Horizontal Curve :
+                D). Horizontal Curve :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('fourth')">Find It</button>
                 </td>
             </tr>
+            <tr>
+                <td>
+                5). Transitional Curve :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('fifth')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                6). Vertical  Curve :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('sixth')">Find It</button>
+                </td>
+            </tr>
+
+
         </table>
     </div>
   
@@ -133,13 +151,13 @@
                     <tr>
                         <td class="row_hider_ep1_no"> Width of Road : </td>
                         <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 100 m/s"  id="one_width_one" />    
+                            <input type="text" placeholder="eg. 100 m"  id="one_width_one" />    
                         </td>
                     </tr>
                     <tr>
                         <td class="row_hider_ep1_no">Slpoe of the road : </td>   
                         <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 12 sec"  id="one_slope_one" />    
+                            <input type="text" placeholder="eg. 0.5"  id="one_slope_one" />    
                         </td>
                     </tr>
                         <td></td>
@@ -167,7 +185,7 @@
                     <tr>
                         <td class="row_hider_ep2_no"> Enter the value of camber :  </td>
                         <td class="row_hider_ep2_no">
-                            <input type="text" placeholder="eg. 100 m/s"  id="one_camber_two" />    
+                            <input type="text" placeholder="eg. 10"  id="one_camber_two" />    
                         </td>
                     </tr>
                     <tr>
@@ -195,7 +213,7 @@
                     <tr>
                         <td class="row_hider_ep3_no"> Enter the value of radius of curvature : </td>
                         <td class="row_hider_ep3_no">
-                            <input type="text" placeholder="eg. 100 m/s"  id="one_radius_three" />    
+                            <input type="text" placeholder="eg. 100 m"  id="one_radius_three" />    
                         </td>
                     </tr>
                         <td></td>
@@ -631,6 +649,83 @@
         </div>
     </div>
 
+    <div class="block" id="block-fifth">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>5). Transition Curve : </h1>
+        </div>
+            <div class="block-wrapper">
+                <form onsubmit="return false" id="forms">
+                    <table class="option-table">
+                        
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                1. velocity of test vehical ( m/s )  :
+                            </td>
+                            <td>
+                                <input type="text" placeholder="100 m/s"  id="fifth_velocity_one" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2. Radius of curvature of horizontal curve ( m ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="fifth_radius_one" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. Width of the Road ( m ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="fifth_width_one" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                4. Extra winding provided ( m ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="fifth_winding_one" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                5. Maximum super Elivation (  )  : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="fifth_elivation_one" required />
+                                    
+                            </td>
+                        </tr>                       
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="findIt" value="Find It" onclick="calculate_transition_curve() "/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="result-block" id="result_block_two">
+
+                <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_two()"> CLOSE</button> </h1>
+                <h1 class="result" id="safe_sight_distance"></h1>
+                
+            </div>
+            <div class="result-block" >
+                <h1 class="error-result" id="block_error"></h1>
+            </div>
+    </div>
 
 
     
