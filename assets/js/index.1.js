@@ -54,8 +54,13 @@ $(document).ready(function() {
         var ep1_yes = document.getElementById("one_ep1_yes");
         var ep1_no = document.getElementById("one_ep1_no");
     
-        if( ep1_yes.checked ==  true)  {      
+        if( ep1_yes.checked ==  true)  { 
+
             hide_element_row_hider1();
+        
+            show_element_row_hider2();
+            show_element_row_hider3();
+               
         }
         else if(ep1_no.checked == true) {
             show_element_row_hider1();        
@@ -68,6 +73,9 @@ $(document).ready(function() {
     
         if( ep2_yes.checked ==  true)  {
             hide_element_row_hider2();
+
+            show_element_row_hider1();
+            show_element_row_hider3();
         }
     
         else if(ep2_no.checked == true) {
@@ -81,6 +89,9 @@ $(document).ready(function() {
     
         if( ep3_yes.checked ==  true)  {
             hide_element_row_hider3();
+
+            show_element_row_hider1();
+            show_element_row_hider2();
         }
     
         else if(ep3_no.checked == true) {

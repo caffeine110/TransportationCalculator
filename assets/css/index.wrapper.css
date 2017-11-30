@@ -12,7 +12,7 @@ div.wrapper table.option-table {
     text-align:center;
     padding-top:50px;
     margin:0 auto;
-    border-bottom:1px dotted #043655;
+    border-bottom:1px dotted #c0392b;;
 }
 div.wrapper table tr * {
     border-radius:8px;
@@ -33,7 +33,7 @@ div.wrapper table tr:nth-child(odd) {
 }
 
 div.wrapper table tr.option-table-heading {
-    background-color:#043655;
+    background-color:#c0392b;
     color:#fff;
 }
 
@@ -41,12 +41,14 @@ div.wrapper table.option-table tr td button.option-button {
     padding:8px 15px;
     border:none;
     border-radius:5px;
-    color:#fff;
-    background-color:#0579bd;
+    color:#c0392b;
+    border:2px solid #c0392b;
+    background-color:#fff;
     
 }
 div.wrapper table.option-table tr td button:hover {
-    background-color:#043655;
+    background-color:#801910;
     cursor:pointer;
+    color:#fff;
 }
 

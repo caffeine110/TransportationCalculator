@@ -31,7 +31,7 @@
 <body>
     <div id="loader"></div>
     <header>
-        <h1>Reaserch Title</h1>
+        <h1>Transportation </h1>
     </header>
 
     <div class="wrapper">
@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <td>
-                   A). Basic Elements Of Highway Geometric Design :
+                   1). Basic Elements Of Highway Geometric Design :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('first')">Find It</button>
@@ -50,7 +50,7 @@
             </tr>
             <tr>
                 <td>
-                B). Safe straight Distance : :
+                2). Safe straight Distance : :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('second')">Find It</button>
@@ -58,7 +58,7 @@
             </tr>
             <tr>
                 <td>
-                C). Overtaking Sight Distance :
+                3). Overtaking Sight Distance :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('third')">Find It</button>
@@ -66,7 +66,7 @@
             </tr>
             <tr>
                 <td>
-                D). Horizontal Curve :
+                4). Horizontal Curve :
                 </td>
                 <td>
                     <button class="option-button" onclick="show_block('fourth')">Find It</button>
@@ -112,13 +112,13 @@
 
                     <!--  1 st condition  parabolla -->                    
                     <tr>
-                        <td>1). Camber Calculation  ( C ): </td>
+                        <td>1). Camber Calculation ( C ): </td>
                         <td>
                             <label for="ep1_yes">Yes</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="one_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_first()" required />
+                            <input type="radio" name="ep1_no" class="radioButtons" id="one_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_first()"  />
                             &nbsp;&nbsp;
                             <label for="ep1_no">No</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="one_ep1_no"  value="ep1_no" onchange="check_radio_buttons_first()" checked />                   
+                            <input type="radio" name="ep1_no" class="radioButtons" id="one_ep1_no"  value="ep1_no" onchange="check_radio_buttons_first()" checked/>                   
                         </td>
                     </tr>
                      
@@ -142,12 +142,13 @@
                     </tr>
                         <td>  </td>
                         <td class="row_hider_ep1_no">
-                            <button id="fourth_findIt_one" onclick="calculate_camber()" >FindIt</button>
+                            <button  id="findIt" onclick="calculate_camber()" >FindIt</button>
                                 
                         </td>
                     </tr>   
+           
 
-                    <!--  2nd condition straight-->
+                <!--  2nd condition straight-->
                     <tr>
                         <td class="row_hider_ep1_no"> Width of Road : </td>
                         <td class="row_hider_ep1_no">
@@ -162,14 +163,10 @@
                     </tr>
                         <td></td>
                         <td class="row_hider_ep1_no">
-                            <button id="fourth_findIt_one" onclick="calculate_camber()" >FindIt</button>
+                            <button id="findIt" onclick="calculate_camber()" >FindIt</button>
                                 
                         </td>
-                    </tr>   <!-- end of 1 yes is checked-->
-                    
-
-
-
+                    </tr> 
                     <!-- if 2 yes is checked-->
                     <tr>
                         <td>2). Gradient Calculation ( G.) : </td>
@@ -191,14 +188,10 @@
                     <tr>
                         <td>  </td>
                         <td class="row_hider_ep2_no">
-                                <button id="fourth_findIt_two" onclick="calculate_gradient()" >FindIt</button>
+                                <button id="findIt" onclick="calculate_gradient()" >FindIt</button>
                                 
                         </td>
                     </tr>       <!-- end of 2 yes is checked-->
-
-
-
-                    <!-- if 3 yes is checked-->
                     <tr>
                         <td>3). compensated Gradient  ( C.G.) : </td>
                         <td>
@@ -218,13 +211,12 @@
                     </tr>
                         <td></td>
                         <td class="row_hider_ep3_no">
-                            <button id="one_findIt_three" onclick="calculate_compensated_gradient()" >FindIt</button>                            
+                            <button id="findIt" onclick="calculate_compensated_gradient()" >FindIt</button>                            
                         </td>
                     </tr>   <!-- end of 3 yes is checked-->
                     
-
-
                 </table>
+                
             </form>
         </div>
         <div class="result-block" id="result_block_one">
@@ -335,14 +327,14 @@
 
                     <tr>
                         <td>
-                            ___1) One way traffic :
+                            1) One way traffic :
                         </td>
                         <td>
                             <label for="ep1_yes">Yes</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="ep1_yes" value="ep1_yes" onchange="check_radio_buttons_one()"  />
+                            <input type="radio" name="ep_no" class="radioButtons" id="ep1_yes" value="ep1_yes" onchange="check_radio_buttons_one()"  />
                             &nbsp;&nbsp;
                             <label for="ep1_no">No</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="ep1_no"  value="ep1_no" onchange="check_radio_buttons_one()" checked  />                   
+                            <input type="radio" name="ep_no" class="radioButtons" id="ep1_no"  value="ep1_no" onchange="check_radio_buttons_one()" checked />                   
                         </td>
                     </tr>
 
@@ -383,21 +375,21 @@
                     <tr>
                         <td>  </td>
                         <td class="row_hider_ep1_no">
-                            <input type="submit" id="findIt" value="Find It" onclick="calculate_one_way()"/>
+                            <button type="submit" id="findIt" value="Find It" onclick="calculate_one_way()" >FindIt</button>
                         </td>
                     </tr>   <!-- end of 2 yes is checked-->
 
 
                     <tr>
                         <td>
-                            ___2) Two way traffic :
+                            2) Two way traffic :
                         </td>
                         <td>
                             <label for="ep2_yes">Yes</label>
-                            <input type="radio" name="ep2" class="radioButtons" id="ep2_yes" value="ep2_yes" onchange="check_radio_buttons_two()" checked />
+                            <input type="radio" name="ep2" class="radioButtons" id="ep2_yes" value="ep2_yes" onchange="check_radio_buttons_two()"  />
                             &nbsp;&nbsp;
                             <label for="ep2_no">No</label>
-                            <input type="radio" name="ep2" class="radioButtons" id="ep2_no"  value="ep2_no" onchange="check_radio_buttons_two()" required />                   
+                            <input type="radio" name="ep2" class="radioButtons" id="ep2_no"  value="ep2_no" onchange="check_radio_buttons_two()" checked />                   
                         </td>
                     </tr>
                     <!-- if 2 yes is checked-->
@@ -485,10 +477,10 @@
                         <td>1). Super Elivation: </td>
                         <td>
                             <label for="ep1_yes">Yes</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_1()" required />
+                            <input type="radio" name="ep1_no" class="radioButtons" id="fourth_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_1()"  />
                             &nbsp;&nbsp;
                             <label for="ep1_no">No</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep1_no"  value="ep1_no" onchange="check_radio_buttons_1()" checked />                   
+                            <input type="radio" name="ep1_no" class="radioButtons" id="fourth_ep1_no"  value="ep1_no" onchange="check_radio_buttons_1()" checked />                   
                         </td>
                     </tr>
                      
@@ -506,7 +498,7 @@
                     </tr>
                         <td>  </td>
                         <td class="row_hider_ep1_no">
-                            <button id="fourth_findIt_one" onclick="calculate_super_elivation()" >FindIt</button>
+                            <button id="findIt" onclick="calculate_super_elivation()" >FindIt</button>
                                 
                         </td>
                     </tr>   <!-- end of 1 yes is checked-->
@@ -555,7 +547,7 @@
                     <tr>
                         <td>  </td>
                         <td class="row_hider_ep2_no">
-                                <button id="fourth_findIt_two" onclick="calculate_extra_winding_of_road()" >FindIt</button>
+                                <button id="findIt" onclick="calculate_extra_winding_of_road()" >FindIt</button>
                                 
                         </td>
                     </tr>       <!-- end of 2 yes is checked-->
@@ -567,10 +559,10 @@
                         <td>3). Set Back Distance : </td>
                         <td>
                             <label for="ep3_yes">Yes</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep3_yes" value="ep3_yes" onchange="check_radio_buttons_3()" required />
+                            <input type="radio" name="ep_no1" class="radioButtons" id="fourth_ep3_yes" value="ep3_yes" onchange="check_radio_buttons_3()" />
                             &nbsp;&nbsp;
                             <label for="ep3_no">No</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep3_no"  value="ep3_no" onchange="check_radio_buttons_3()" checked />                   
+                            <input type="radio" name="ep_no1" class="radioButtons" id="fourth_ep3_no"  value="ep3_no" onchange="check_radio_buttons_3()" checked />                   
                         </td>
                     </tr>
                      
@@ -594,7 +586,7 @@
                     </tr>
                         <td>  </td>
                         <td class="row_hider_ep3_no">
-                            <button id="fourth_findIt_three" onclick="calculate_set_back_distance()" >FindIt</button>                            
+                            <button id="findIt" onclick="calculate_set_back_distance()" >FindIt</button>                            
                         </td>
                     </tr>   <!-- end of 3 yes is checked-->
                     
@@ -625,7 +617,7 @@
                     </tr>
                         <td>  </td>
                         <td class="row_hider_ep4_no">
-                            <button id="fourth_findIt_four" onclick="calculate_curve_resistance()" >FindIt</button>
+                            <button id="findIt" onclick="calculate_curve_resistance()" >FindIt</button>
                         </td>
                     </tr>   <!-- end of 4 yes is checked-->
 
@@ -716,10 +708,10 @@
                     </table>
                 </form>
             </div>
-            <div class="result-block" id="result_block_two">
+            <div class="result-block" id="result_block_fifth">
 
-                <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_two()"> CLOSE</button> </h1>
-                <h1 class="result" id="safe_sight_distance"></h1>
+                <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_fifth()"> CLOSE</button> </h1>
+                <h1 class="result" id="safe_sight"></h1>
                 
             </div>
             <div class="result-block" >
@@ -727,14 +719,13 @@
             </div>
     </div>
 
-
     
     
 
     <footer class="footer-bottom">
-        <h1>Research Project </h1>
+        
     </footer>
-    <a href="https://github.com/asprazz" target="_blank" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:rgb(113, 186, 255); color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <a href="https://github.com/asprazz" target="_blank" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:rgb(222, 95, 95); color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <script src="assets/js/index.main.js"></script>
     <script src="assets/js/index.globals.js"></script>
@@ -742,5 +733,7 @@
     <script src="assets/js/index.2.js"></script>
     <script src="assets/js/index.3.js"></script>
     <script src="assets/js/index.4.js"></script>
+    <script src="assets/js/index.5.js"></script>
+    <script src="assets/js/index.6.js"></script>
 </body>
 </html>

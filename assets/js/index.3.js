@@ -41,9 +41,11 @@ function check_radio_buttons_one() {
 
     if( ep1_yes.checked ==  true)  {      
         hide_element_row_hider1();
+        show_element_row_hider2();
     }
     else if(ep1_no.checked == true) {
-        show_element_row_hider1();        
+        show_element_row_hider1(); 
+               
     } 
 }
 
@@ -53,6 +55,8 @@ function check_radio_buttons_two() {
 
     if( ep2_yes.checked ==  true)  {
         hide_element_row_hider2();
+        show_element_row_hider1();
+        
     }
 
     else if(ep2_no.checked == true) {

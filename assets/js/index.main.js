@@ -25,17 +25,29 @@ function show_block(block) {
         var block4 = document.getElementById("block-fourth");
         block4.style.display="block";
     }
+    if(block=="fifth") {
+        var block5 = document.getElementById("block-fifth");
+        block5.style.display="block";
+    }
+    if(block=="sixth") {
+        var block6 = document.getElementById("block-sixth");
+        block6.style.display="block";
+    }
 }
 function close_all() {
     var block1 = document.getElementById("block-one");
     var block2 = document.getElementById("block-two");
     var block3 = document.getElementById("block-third");
     var block4 = document.getElementById("block-fourth");
+    var block5 = document.getElementById("block-fifth");
+    var block6 = document.getElementById("block-sixth");
    
     block1.style.display = "none";   
     block2.style.display = "none";   
     block3.style.display = "none";
     block4.style.display = "none";
+    block5.style.display = "none";
+    block6.style.display = "none";
 
 }
 

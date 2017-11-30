@@ -1,13 +1,13 @@
 footer {
     width:100%;
-    background-color:#222;
+    background-color:transparent;
     padding:10px 20px;
     position:fixed;
     bottom:0px;
 }
 footer h1 {
     font-size:15px;
-    color:#fff;
+    color:#c0392b;
     font-family:sans-serif;
     text-align:center;
 }
