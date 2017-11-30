@@ -746,7 +746,7 @@
                         -->
                         <tr>
                             <td>
-                                Design of th Summit curve  :
+                                Design of the Summit curve  :
                             </td>
                             <td>
                             </td>
@@ -756,16 +756,25 @@
                                 1.safe sight Distance ( m ) : 
                             </td>
                             <td>
-                                <input type="text" placeholder="m"  id="sixth_radius_one" required />
+                                <input type="text" placeholder="1 m"  id="sixth_safe_sight_distance_one" />
                                     
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                2. Deviation angle ( Difference between grades ) : 
+                                2.OSD ( m ) : 
                             </td>
                             <td>
-                                <input type="text" placeholder="angle"  id="sixth_width_one" required />
+                                <input type="text" placeholder="1 m"  id="sixth_safe_osd" />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. Deviation angle ( Difference between grades ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="angle"  id="sixth_daviation_one" required />
                                     
                             </td>
                         </tr>
@@ -775,7 +784,14 @@
                                 <input type="submit" id="findIt" value="Find It" onclick="calculate_transition_summit_curve() "/>
                             </td>
                         </tr>
-
+                    </table>
+                </form>
+                <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
 
                         <!-- design of vally curve 
                                 <input type="text" placeholder="2"  id="fifth_winding_one" required />
@@ -801,7 +817,7 @@
                                 2. Deviation angle ( Difference between grades ) : 
                              </td>
                             <td>
-                                <input type="text" placeholder="m"  id="sixth_radius_two" required />
+                                <input type="text" placeholder="m"  id="sixth_daviation_two" required />
                                     
                             </td>
                         </tr>
@@ -827,7 +843,11 @@
             <div class="result-block" id="result_block_sixth">
 
                 <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_sixth()"> CLOSE</button> </h1>
-                <h1 class="result" id="verticle_curve"></h1>
+                <h1 class="result" id="verticle_summit_curve"></h1>
+                <h1 class="result" id="verticle_vally_curve"></h1>
+                <h1 class="result" id="verticle_vally_curve1"></h1>
+                <h1 class="result" id="verticle_vally_curve2"></h1>
+                <h1 class="result" id="verticle_vally_curve3"></h1>
                 
             </div>
             <div class="result-block" >
@@ -850,5 +870,6 @@
     <script src="assets/js/index.2.js"></script>
     <script src="assets/js/index.3.js"></script>
     <script src="assets/js/index.4.js"></script>
+    <script src="assets/js/index.6.js"></script>
 </body>
 </html>
