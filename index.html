@@ -1,0 +1,832 @@
+<!--
+    ###############################################################
+    Developed By :-- Ankush Patil(http://github.com/asprazz) 
+    ###############################################################
+
+
+    Aim of software to help civil engineers with their daily calculation works and large formulaes
+    Research Details: Calculating Civil Engineering factors like precipitaions, transpiration, etc.
+    Reasearch Lead : Aman Srivastav And Team (Civil Department, GCOE, Jalgaon) 
+    Research Tech Support: Ankush Patil (Computer Department, GCOE, Jalgaon)
+     
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="assets/css/index.header.css">
+    <link rel="stylesheet" href="assets/css/index.wrapper.css">
+    <link rel="stylesheet" href="assets/css/index.blocks.css">
+    <link rel="stylesheet" href="assets/css/index.footer.css">
+    <title>HOME | IEEE reseasrch </title>
+
+
+
+    <script src="assets/js/jquery.min.js"></script>
+</head>
+<body>
+    <div id="loader"></div>
+    <header>
+        <h1>Reaserch Title</h1>
+    </header>
+
+    <div class="wrapper">
+        <table class="option-table">
+            <tr class="option-table-heading">
+                <th >Things</th>
+                <th>Button</th>
+            </tr>
+            <tr>
+                <td>
+                   1. Adequacy Of Rain Gauge stations and precipitaion measurement :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('first')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                2. Safe straight Distance : :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('second')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                3. Overtaking Sight Distance :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('third')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                4. Horizontal Curve :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('fourth')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                5. Infiltration :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('fifth')">Find It</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                6. Runoff :
+                </td>
+                <td>
+                    <button class="option-button" onclick="show_block('sixth')">Find It</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="block" id="block-one">
+
+
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>1. Adequacy Of Rain Gauge stations and precipitaion measurement : </h1>
+        </div>
+        <div class="block-wrapper">
+           
+            <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                        
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            1. Enter the number of existing rain guage stations (m) :
+                        </td>
+                        <td>
+                            <input type="text" placeholder="1" name="numberOfRainGauge" id="numberOfRainGauge" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2. Enter the rainfall recieved on each station (in cm) :
+                        </td>
+                        <td>
+                            <input type="text" placeholder="1,2,3,4" name="numberOfRainGauge" id="arrayOfRainfalls" required />
+                                
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3. Enter the corresponding area of each station (in km<sup>2</sup>) :
+                        </td>
+                        <td>
+                            <input type="text" placeholder="1.0,2.0,3.0,4.0" name="numberOfRainGauge" id="arrayOfAreas" required/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            4. Enter the value of allowable degree of error in measurement (in %) :
+                        </td>
+                        <td>
+                            <input type="text"  placeholder="00.00%" name="numberOfRainGauge" id="errorPercentage" required/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" id="findIt" value="Find It" onclick="calculate_rain_gauge()"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="result-block" id="result">
+            <h1 class="resultHeading"  onclick ="" >Result : <button class="btn btn-no" onclick="close_result()"> CLOSE</button> </h1>
+            <h1 class="result" id="numberOfRainGuage">Number of rainguage required : __________</h1>
+            <div class="buttons">
+                <span class="heading">Do you want to know the avarage precipitaion ? </span> 
+                <button class="btn btn-yes" onclick="print_ppt('show')">Yes</button>
+                <button class="btn btn-no" onclick="print_ppt('hide')">No</button>
+            </div>
+            <div class="buttons" id="ppt_method">
+                <span>Select Method :</span>
+                <button class="btn btn-info" id="arithmatic_button" onclick="print_ppt('arithmatic')">Arithmatic Mean Method</button>
+                <button class="btn btn-info" id="thi_button" onclick="print_ppt('thiessen')">Thiessen's Polygon Method</button>
+                <button class="btn btn-info" id="iso_button" onclick="print_ppt('isohyetal')">Isohyetal Method</button>
+            </div>
+            <div class="buttons" id="ppt_result_block">
+                <h1 class="result" id="ppt_result"></h1>
+            </div>
+        </div>
+        <div class="result-block"    >
+            <h1 class="error-result" id="block_error"></h1>
+        </div>
+        <div class="block-wrapper-for-iso" id="block-wrapper-for-iso">
+
+            <div class="header-iso">
+               <h2>Isohyetal <span class="blue">Method</span></h2>
+           </div>   
+           <div class="form-input-data">
+               <label for="number_of_columns">
+                   Enter Number Of Columns :
+                </label>
+                <input type="text" name="number_of_columns" id="number_of_columns" placeholder="2"/>  
+                <button id="number_of_columns_button" onclick="create_table_iso();">Create Table</button>
+            </div>
+            <div >
+                    <form onsubmit="return false" id="forms">
+                        <table class="option-table" id="table_iso">
+                                
+                            <tr class="option-table-heading">
+                                <th>Col. No.</th>
+                                <th>Isohyetal Interval In mm</th>
+                                <th>Area in km<sup>2</sup></th>
+                            </tr>
+                        </table>
+                        
+                    </form>
+                    <div class="buttons" id="result_iso_block">
+                        <h1 class="result" id="result_iso_block_element"></h1>
+                    </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="block" id="block-two">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>2 . safe sight distance : </h1>
+        </div>
+            <div class="block-wrapper">
+                <form onsubmit="return false" id="forms">
+                    <table class="option-table">
+                        
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                1. Enter the Reaction time of Vehicle   :
+                            </td>
+                            <td>
+                                <input type="text" placeholder="1"  id="reaction" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2. Velocity of vehicle in ( m/s ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="velocity" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. Slope of the Road () : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="slope" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                4. breaking (n) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="breaking" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                5. Longitudinal friction  : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="longitudinal" required />
+                                    
+                            </td>
+                        </tr>                       
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <input type="submit" id="findIt" value="Find It" onclick="calculate_safe_sight_distance() "/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="result-block" id="result_block_two">
+
+                <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_two()"> CLOSE</button> </h1>
+                <h1 class="result" id="safe_sight_distance"></h1>
+                
+            </div>
+            <div class="result-block" >
+                <h1 class="error-result" id="block_error"></h1>
+            </div>
+    </div>
+    <div class="block" id="block-third">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>3.Overtaking Sight Distance  : </h1>
+        </div>
+        <div class="block-wrapper">
+            <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            ___1) One way traffic :
+                        </td>
+                        <td>
+                            <label for="ep1_yes">Yes</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="ep1_yes" value="ep1_yes" onchange="check_radio_buttons_1()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep1_no">No</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="ep1_no"  value="ep1_no" onchange="check_radio_buttons_1()" required />                   
+                        </td>
+                    </tr>
+
+                     
+                    <!-- if 1 yes is checked-->
+                    <tr>
+                        <td class="row_hider_ep1_no">
+                            Velocity of vehical : 
+                        </td>
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="velocity-one" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep1_no">
+                            Reacation time : 
+                        </td>   
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="reaction-one" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep1_no">
+                            Lenth of Vehical : 
+                        </td>   
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 3 m"  id="length-one" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep1_no">
+                            Accerationn of Vehical : 
+                        </td>   
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 10 m/s2"  id="acceleration-one" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>  </td>
+                        <td class="row_hider_ep1_no">
+                            <input type="submit" id="findIt" value="Find It" onclick="calculate_one_way()"/>
+                        </td>
+                    </tr>   <!-- end of 2 yes is checked-->
+
+
+                    <tr>
+                        <td>
+                            ___2) Two way traffic :
+                        </td>
+                        <td>
+                            <label for="ep2_yes">Yes</label>
+                            <input type="radio" name="ep2" class="radioButtons" id="ep2_yes" value="ep2_yes" onchange="check_radio_buttons_2()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep2_no">No</label>
+                            <input type="radio" name="ep2" class="radioButtons" id="ep2_no"  value="ep2_no" onchange="check_radio_buttons_2()" required />                   
+                        </td>
+                    </tr>
+                    <!-- if 2 yes is checked-->
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Velocity of vehical : 
+                        </td>
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="velocity-two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Reacation time : 
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="reaction-two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Lenth of Vehical : 
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 3 m"   id="length-two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Accerationn of Vehical : 
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 10 m/s2"  id="acceleration-two" />    
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Velocity of opposite  Vehicals : 
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="velocity_rev" />    
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td>  </td>
+                        <td class="row_hider_ep2_no">
+                            <input type="submit" id="findIt" value="Find It" onclick="calculate_two_way()"/>
+                        </td>
+                    </tr>       <!-- end of 2 yes is checked-->
+
+
+                </table>
+            </form>
+        </div>
+        <div class="result-block" id="result_block_third">
+            
+            <h1 class="resultHeading"  onclick ="" >Result : <button class="btn btn-no" onclick="close_result_block_third()"> CLOSE</button> </h1>
+            <h1 class="result" id="result_of_one_way"></h1>
+            <h1 class="result" id="result_of_two_way"></h1>
+            
+
+        </div>
+
+        <div class="result-block" >
+            <h1 class="error-result" id="error_block_third"></h1>
+        </div>
+    </div>
+    <div class="block" id="block-fourth">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>4.. horizontal curve : </h1>
+        </div>
+        <div class="block-wrapper">
+            <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+
+
+                    <!-- if 1 yes is checked-->
+                    <tr>
+                        <td>___1) Super Elivation: </td>
+                        <td>
+                            <label for="ep1_yes">Yes</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_1()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep1_no">No</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep1_no"  value="ep1_no" onchange="check_radio_buttons_1()" required />                   
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <td class="row_hider_ep1_no"> Velocity of vehical : </td>
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="fourth_velocity_one" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep1_no"> Radius of Horizontal Curve : </td>   
+                        <td class="row_hider_ep1_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="fourth_radius_one" />    
+                        </td>
+                    </tr>
+                        <td>  </td>
+                        <td class="row_hider_ep1_no">
+                            <input type="submit" id="fourth_findIt_one" value="Find It" onclick="calculate_super_elivation()"/>
+                        </td>
+                    </tr>   <!-- end of 1 yes is checked-->
+
+
+                    <!-- if 2 yes is checked-->
+                    <tr>
+                        <td>  ___2) Extra Winding Of Road : </td>
+                        <td>
+                            <label for="ep2_yes">Yes</label>
+                            <input type="radio" name="ep2" class="radioButtons" id="fourth_ep2_yes" value="ep2_yes" onchange="check_radio_buttons_2()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep2_no">No</label>
+                            <input type="radio" name="ep2" class="radioButtons" id="fourth_ep2_no"  value="ep2_no" onchange="check_radio_buttons_2()" required />                   
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="row_hider_ep2_no">   Velocity of test vehical in ( kmph ):  </td>
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="fourth_velocity_two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">  Radius of Curvature of Horixontal Curve ( in m ) :  </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="fourth_radius_two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            No of lanes on road :
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 3 m"   id="fourth_lanes_two" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep2_no">
+                            Length of test Vehical ( in m ) : 
+                        </td>   
+                        <td class="row_hider_ep2_no">
+                            <input type="text" placeholder="eg. 10 m/s2"  id="fourth_length_two" />    
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td>  </td>
+                        <td class="row_hider_ep2_no">
+                            <input type="submit" id="fourth_findIt_two" value="Find It" onclick="calculate_extra_winding()"/>
+                        </td>
+                    </tr>       <!-- end of 2 yes is checked-->
+
+
+
+                    <!-- if 3 yes is checked-->
+                    <tr>
+                        <td>___3) Set Back Distance : </td>
+                        <td>
+                            <label for="ep3_yes">Yes</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep3_yes" value="ep3_yes" onchange="check_radio_buttons_3()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep3_no">No</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep3_no"  value="ep3_no" onchange="check_radio_buttons_3()" required />                   
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <td class="row_hider_ep3_no"> length of horizontal curve : </td>
+                        <td class="row_hider_ep3_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="fourth_length_three" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep3_no"> Enter the value of  : ssd : </td>
+                        <td class="row_hider_ep3_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="fourth_ssd_three" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep3_no"> Radius of Curvature of horizontal : </td>   
+                        <td class="row_hider_ep3_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="fourth_radius_three" />    
+                        </td>
+                    </tr>
+                        <td>  </td>
+                        <td class="row_hider_ep3_no">
+                            <input type="submit" id="fourth_findIt_three" value="Find It" onclick="calculate_set_back_distance()"/>
+                        </td>
+                    </tr>   <!-- end of 3 yes is checked-->
+
+
+
+                   <!-- if 4 yes is checked-->
+                    <tr>
+                        <td>___4) Curve Resistance: </td>
+                        <td>
+                            <label for="ep4_yes">Yes</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep4_yes" value="ep4_yes" onchange="check_radio_buttons_4()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep4_no">No</label>
+                            <input type="radio" name="1ep" class="radioButtons" id="fourth_ep4_no"  value="ep4_no" onchange="check_radio_buttons_4()" required />                   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep4_no"> Enter the actual tractive Forse : </td>
+                        <td class="row_hider_ep4_no">
+                            <input type="text" placeholder="eg. 100 m/s"  id="fourth_velocity_four" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep4_no"> Enter the Turing angle ( in degree )  : </td>   
+                        <td class="row_hider_ep4_no">
+                            <input type="text" placeholder="eg. 12 sec"  id="fourth_reaction_four" />    
+                        </td>
+                    </tr>
+                        <td>  </td>
+                        <td class="row_hider_ep4_no">
+                            <input type="submit" id="fourth_findIt_four" value="Find It" onclick="calculate_curve_resistance()"/>
+                        </td>
+                    </tr>   <!-- end of 4 yes is checked-->
+
+
+
+                </table>
+            </form>
+        </div>
+        <div class="result-block" id="result_block_fourth">
+            
+            <h1 class="resultHeading"  onclick ="" >Result : <button class="btn btn-no" onclick="close_result_block_fourth()"> CLOSE</button> </h1>
+            <h1 class="result" id="result_of_super_elivation"></h1>
+            <h1 class="result" id="result_of_extra_winding_of_road"></h1>
+            <h1 class="result" id="result_of_set_back_distance"></h1>
+            <h1 class="result" id="result_of_curve_resisrance"></h1>
+
+        </div>
+
+        <div class="result-block" >
+            <h1 class="error-result" id="error_block_fourth"></h1>
+        </div>
+    </div>
+
+    <div class="block" id="block-fifth">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>5. Infiltration : </h1>
+        </div>
+        <div class="block-wrapper">
+            <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                           <b>Develop Horton infiltration curve and enter following values :</b>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            1. Initial rate of infiltration capacity (in mm/hr) (fo) :
+                        </td>
+                        <td>
+                            <input type="text" placeholder="eg. 122" name="" id="initial_rate_of_infiltration" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2. Final constant rate of infiltration at saturation (mm/hr) (fc)  :
+                        </td>
+                        <td>
+                            <input type="text" placeholder="eg. 123" name="" id="final_constant_rate_of_infiltration" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3. Shaded area of curve between initial infiltration and constant rate of infiltration (A) :  
+                        </td>
+                        <td>
+                            <input type="text" placeholder="eg. 11" name="" id="shaded_area" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            4. Time from the beginning of storm (hours) (t) : 
+                        </td>
+                        <td>
+                            <input type="text" placeholder="eg. 99" name="" id="time_for_storm" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="submit" id="findIt" value="Find It" onclick="calculate_infiltration() "/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="result-block" id="result_block_fifth">
+
+            <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_fifth()"> CLOSE</button> </h1>
+            <h1 class="result" id="result_infiltration"></h1>
+          
+            
+        </div>
+        <div class="result-block" >
+            <h1 class="error-result" id="error_block_fourth"></h1>
+        </div>
+    </div>
+
+    <div class="block" id="block-sixth">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>6. Runoff  : </h1>
+        </div>
+        <div class="block-wrapper">
+            <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+                    <tr>
+                        <td><b>Enter the values of the following : </b></td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            1. Initial depth of reservoir (in m)(s1) :
+                        </td>
+                        <td class="">
+                            <input type="text" placeholder="eg. 9.8" name="numberOfRainGauge" id="initial_depth" required/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            2. Final depth of reservoir (in m )(s2) :
+                        </td>
+                        <td class="">
+                            <input type="text" placeholder="eg. 9.8" name="numberOfRainGauge" id="final_depth" required/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                           3. Volume inflow into the reservoir : 
+                        </td>
+                        <td class="">
+                            <input type="text" placeholder="eg. 9.8" name="numberOfRainGauge" id="volume_inflow_reservoir" required/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            4. Volume out flow from the reservoir :
+                        </td>
+                        <td class="">
+                            <input type="text" placeholder="eg. 9.8" name="numberOfRainGauge" id="volume_outflow_reservoir" required/>    
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <b>Do you want the same values of parameter calculated before of precipitation, evaporation, evapotranspiration  ? </b> ? :
+                        </td>
+                        <td>
+                            <label for="ep_yes">Yes</label>
+                            <input type="radio" name="ep" class="radioButtons" id="ep_yes_sixth_block" value="ep_yes" onchange="check_radio_buttons_sixth_block()" checked />
+                            &nbsp;&nbsp;
+                            <label for="ep_no">No</label>
+                            <input type="radio" name="ep" class="radioButtons" id="ep_no_sixth_block"  value="ep_no" onchange="check_radio_buttons_sixth_block()"   />                   
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="row_hider_ep_no_sixth_block">
+                           Enter the value of following values then :
+                        </td>
+                        <td class="row_hider_ep_no_sixth_block">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="row_hider_ep_no_sixth_block">
+                            1. Precipitation :
+                        </td>
+                        <td class="row_hider_ep_no_sixth_block">
+                            <input type="text" placeholder="eg. 12.2" name="solar_radiation" id="precipitaion_sixth_block" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep_no_sixth_block">
+                            2. Evaporation :
+                        </td>
+                        <td class="row_hider_ep_no_sixth_block">
+                            <input type="text" placeholder="eg. 123.45" name="latent_heat" id="evaporation_sixth_block" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep_no_sixth_block">
+                            3. Evapotranspiration :
+                        </td>
+                        <td class="row_hider_ep_no_sixth_block">
+                            <input type="text" placeholder="eg. 123.45" name="latent_heat" id="evapotranspiration_sixth_block" />    
+                          </td>
+                    </tr>
+                    <tr>
+                        <td class="row_hider_ep_no_sixth_block">
+                            4. Infiltration :
+                        </td>
+                        <td class="row_hider_ep_no_sixth_block">
+                            <input type="text" placeholder="eg. 123.45" name="latent_heat" id="infiltration_sixth_block" />    
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <input type="submit" id="findIt" value="Find It" onclick="calculate_runoff()"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="result-block" id="result_block_sixth">
+            
+            <h1 class="resultHeading"  onclick ="" >Result : <button class="btn btn-no" onclick="close_result_block_sixth()"> CLOSE</button> </h1>
+            <h1 class="result" id="result_runoff"></h1>
+            
+
+        </div>
+
+        <div class="result-block" >
+            <h1 class="error-result" id="error_block_sixth"></h1>
+        </div>
+    </div>
+
+
+    
+    
+
+    <footer class="footer-bottom">
+        <h1>Research Project </h1>
+    </footer>
+    <a href="https://github.com/asprazz" target="_blank" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:rgb(113, 186, 255); color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <script src="assets/js/index.main.js"></script>
+    <script src="assets/js/index.globals.js"></script>
+    <script src="assets/js/index.1.js"></script>
+    <script src="assets/js/index.2.js"></script>
+    <script src="assets/js/index.3.js"></script>
+    <script src="assets/js/index.4.js"></script>
+    <script src="assets/js/index.5.js"></script>
+    <script src="assets/js/index.6.js"></script>
+</body>
+</html>

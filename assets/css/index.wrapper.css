@@ -1,0 +1,52 @@
+/* ended the wrapper css */
+
+
+div.wrapper {
+    width:100%;
+    height:auto;
+    padding-left:150px;
+    padding-right:150px;
+}
+div.wrapper table.option-table {
+    width:70%;
+    text-align:center;
+    padding-top:50px;
+    margin:0 auto;
+    border-bottom:1px dotted #043655;
+}
+div.wrapper table tr * {
+    border-radius:8px;
+}
+div.wrapper table tr th {
+    padding:15px 30px;
+    border-radius:5px;
+}
+div.wrapper table tr td:first-child{
+    text-align:left;
+    padding-left:50px;
+}
+div.wrapper table tr td {
+    padding:8px 30px;
+}
+div.wrapper table tr:nth-child(odd) {
+    background-color:rgba(0,0,0,0.1);
+}
+
+div.wrapper table tr.option-table-heading {
+    background-color:#043655;
+    color:#fff;
+}
+
+div.wrapper table.option-table tr td button.option-button {
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    color:#fff;
+    background-color:#0579bd;
+    
+}
+div.wrapper table.option-table tr td button:hover {
+    background-color:#043655;
+    cursor:pointer;
+}
+

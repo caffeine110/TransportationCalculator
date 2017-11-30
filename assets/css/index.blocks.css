@@ -1,0 +1,334 @@
+
+
+
+div.block {
+    width:100%;
+    height:auto;
+    background-color:rgba(255,255,255,0.99);
+    position:absolute;
+    top:0;
+   
+    left:0;
+}
+div.block div.block-header {
+    width:100%;
+    height:15%;
+    min-height:80px;
+    background-color:#0579bd;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:15px;
+    color:#fff;
+    padding-left:10%;
+    padding-right:10%;
+    padding-top:2.5%;
+}
+div.block button.close-btn {
+    position:absolute;
+    right:80px;top:30px;
+    padding:15px 20px;
+    border:none;
+    background-color:rgba(0,0,0,0.3);
+    border:1px solid #0579bd;
+    border-radius:2px;
+    color:#fff;
+}
+div.block button.close-btn:hover {
+    border:1px solid #fff;
+    background-color:rgba(255,255,255,0.3);
+    cursor:pointer;
+}
+
+div.block-wrapper {
+    width:100%;
+    height:auto;
+    padding-left:50px;
+    padding-right:50px;
+}
+div.block-wrapper table.option-table {
+    width:70%;
+    text-align:center;
+    padding-top:50px;
+    margin:0 auto;
+    border-bottom:1px dotted #043655;
+}
+div.block-wrapper table tr * {
+
+}
+div.block-wrapper table tr th {
+    padding:10px 20px;
+    border-radius:2px;
+}
+div.block-wrapper table tr td:first-child{
+    text-align:left;
+    padding-left:50px;
+}
+div.block-wrapper table tr td {
+    padding:8px 30px;
+}
+div.block-wrapper table tr:nth-child(odd) {
+    background-color:rgba(0,0,0,0.05);
+}
+
+div.block-wrapper table tr.option-table-heading {
+    background-color:#043655;
+    color:#fff;
+}
+div.block-wrapper table tr td input {
+    padding:5px 20px;
+    border-radius:5px;
+    border:1px solid #ddd;
+    border-radius:0;
+}
+
+div.block-wrapper table #findIt {
+    padding:8px 30px;
+    border:none;
+    background-color:#0579bd;
+    color:#fff;
+
+}
+div.block-wrapper table #findIt:hover {
+    cursor:pointer;
+    background-color:#043655;
+}
+
+/*styling the result block s */
+
+div.block div.result-block {
+    width:100%;
+    height:auto;
+    min-height:500px;
+    padding-top:50px;
+}
+div.block div.result-block  h1.resultHeading {
+    width:50%;
+    text-align:center;
+    padding:10px;
+    font-weight:normal;
+}
+div.block div.result-block h1.result {
+    background-color:#e2e2e2;
+    color:#000;
+    padding:20px;
+    text-align:center;
+    font-family:sans-serif;
+    font-size:22px;
+    font-weight:normal;
+}
+div.block div.result-block h1.resultHeading button {
+    border:none;
+    padding:5px 20px; 
+    border:1px solid #cd5c5c;
+    background-color:#fff;
+    position:relative;
+    right:-60px;
+    top:-4px;
+}
+div.block div.result-block h1.resultHeading button:hover {
+    color:#fff;
+    background-color:#cd5c5c;
+    cursor:pointer;
+}
+    
+
+div.block div.result-block div.buttons {
+    width:100%;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #ddd;
+
+}
+
+div.block div.result-block div.buttons button {
+    border:none;
+    padding:8px 10px;
+    min-width:100px;
+    border-radius:2px;
+    background-color:#fff;
+}
+div.block div.result-block div.buttons span {
+    font-size:20px;
+    font-family:sans-serif;
+    margin-right:50px;
+}
+div.block div.result-block div.buttons button.btn-yes {
+    border:1px solid #228b22;
+}
+div.block div.result-block div.buttons button.btn-no {
+    border:1px solid #cd5c5c;   
+}
+div.block div.result-block div.buttons button.btn-yes:hover {
+    background-color: #228b22;
+    color:#fff;cursor:pointer;
+}
+div.block div.result-block div.buttons button.btn-no:hover {
+    background-color: #cd5c5c;
+    color:#fff;cursor:pointer;
+}
+
+div.block div.result-block div.buttons button.btn-info {
+    border:1px solid #043655;
+    min-width:200px;
+    margin:0 10px;
+    border-radius:2px;
+    font-size:20px;
+    padding:10px 20px;
+}
+div.block div.result-block div.buttons button.btn-info:hover {
+    background-color:#043655;
+    color:#fff;
+    cursor:pointer;
+    
+}
+div.block div.result-block div.buttons button.active {
+    background-color:#043655;
+    color:#fff;
+    border-radius:0px;
+}
+div.block div.result-block div#ppt_result_block {
+    width:100%;   
+    margin:20px 0;
+    border-top:1px solid #ddd;
+    
+}
+div.block div.result-block div.buttons span#ppt_result {
+    width:100%;  
+}
+div.block div.result-block h1.error-result {
+    padding:10px;
+    text-align:center;
+    background-color:#fff;
+    color:firebrick;
+}
+
+
+
+
+/* displayNones for respective blocks */
+div#block-one,div#block-two,div#block-third,div#block-fourth,div#block-fifth,div#block-sixth{
+    display:none;
+}
+#ppt_method,#result,#error,#result_block_two,#result_block_third,#result_block_fourth,#result_block_fifth,#result_block_sixth{
+    display:none;
+}
+
+#ppt_result {
+    background-color:#fff;
+    padding:0;
+    font-size:25px;
+}
+
+
+.block-wrapper-for-iso {
+
+    width:100%;
+    height:auto;
+    padding:20px;
+
+    margin-top:-500px;
+   padding-bottom:200px;
+}
+
+.block-wrapper-for-iso .header-iso {
+    width:100%;
+    margin:0 auto;
+    text-align: center;
+}
+.block-wrapper-for-iso .header-iso h2 {
+    width:20%;
+    min-width: 200px;
+    margin:0 auto;
+    padding:10px;
+    font-family:sans-serif;
+    border-radius:10px;
+    box-shadow:0px 0px 1px -5px #000;
+    border-bottom: 2px solid #0579bd;
+}
+ .blue {
+    color:#0579bd;
+}
+
+.block-wrapper-for-iso .form-input-data {
+    width:100%;
+    margin:20px;    
+    padding:20px;
+    text-align: center;
+    border-top:2px solid #f9f9f9;
+    border-bottom:2px solid #eee;
+
+}
+.block-wrapper-for-iso .form-input-data label {
+    width:20%;
+}
+.block-wrapper-for-iso .form-input-data  input {
+    padding:8px 20px;
+    border-radius:0px;
+    width:100px;
+    border:1px solid #ddd;  
+    
+}
+.block-wrapper-for-iso .form-input-data button {
+    padding:8px 30px;
+    border:none;
+    background-color:#0579bd;
+    color:#fff;
+    margin-left:40px;
+}
+.block-wrapper-for-iso .form-input-data button:hover {
+    cursor:pointer;
+    background-color:#043655;
+}
+.block-wrapper-for-iso  #table_iso {
+    width:75%;
+    margin:0 auto;
+}
+
+table.option-table {
+    width:80%;
+    text-align:center;
+    padding-top:50px;
+    margin:0 auto;
+   
+}
+table tr * {
+
+}
+table tr th {
+    padding:5px 20px;
+    border-radius:2px;
+} table tr td:first-child{
+    text-align:left;
+    padding-left:50px;
+} #table_iso tr td {
+    padding:8px 30px;
+    border-bottom:1px dotted  #bbb;
+} table tr {
+    
+}table tr.option-table-heading {
+    background-color:#043655;
+    color:#fff;
+}table tr td input {
+    padding:5px 20px;
+    border-radius:5px;
+    border:1px solid #ddd;
+    border-radius:0;
+}
+table #findIt {
+    padding:8px 30px;
+    border:none;
+    background-color:#0579bd;
+    color:#fff;
+
+}
+ table #findIt:hover {
+    cursor:pointer;
+    background-color:#043655;
+}
+
+
+#result_iso_block_element {
+    width:100%;
+    padding:20px;
+    text-align:center;
+    font-size:20px;
+}
