@@ -1,30 +1,24 @@
-function calculate_infiltration() {
-    var fo;
-    var fc;
-    var a;
-    var t;
-    var k;
-    fo = document.getElementById("initial_rate_of_infiltration").value;
-    fc = document.getElementById("final_constant_rate_of_infiltration").value;
-    a = document.getElementById("shaded_area").value;
-    t = document.getElementById("time_for_storm").value;
-    fo=parseFloat(fo);
-    fc=parseFloat(fc);
-    a=parseFloat(a);
-    t=parseFloat(t);
+function calculate_transition_curve() {
 
-    k = (fo-fc)/a;
+    v = document.getElementById("fifth_velocity_one").value;
+    r = document.getElementById("fifth_radius_one").value;
+    w = document.getElementById("fifth_width_one").value;
+    e = document.getElementById("fifth_winding_one").value;
+    m = document.getElementById("fifth_elivation_one").value;
 
-    var second_term = (fo-fc) * Math.exp((-k)*t);
+    v=parseFloat(v);
+    r=parseFloat(r);
+    w=parseFloat(w);
+    e=parseFloat(e);
+    m=parseFloat(m);
     
-    rate_of_infiltration = fc + second_term;
+    z1 = (( w + r ) * ( v * m * e ) / 2);
+
     
-    infiltrationFound = true;
+    
     var result = document.getElementById("result_block_fifth");
     result.style.display = "block";
 
-    document.getElementById("result_infiltration").innerHTML = " Rate of infiltration at the time "+t+" is : " + rate_of_infiltration +" mm/hr.";
-    rate_of_infiltration = rate_of_infiltration * t /1000;
-    document.getElementById("result_infiltration").innerHTML += "</br><br/> Depth of infiltration at the time "+t+" is : " + rate_of_infiltration +" m.";
+    document.getElementById("result_infiltration").innerHTML = "Length of  transitional curve is : " +z1+" m.";
 
 }
