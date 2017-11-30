@@ -33,7 +33,8 @@ $(document).ready(function() {
 
 
 
-function check_radio_buttons_1() {
+function check_radio_buttons_one() {
+  
     
     var ep1_yes = document.getElementById("ep1_yes");
     var ep1_no = document.getElementById("ep1_no");
@@ -46,7 +47,7 @@ function check_radio_buttons_1() {
     } 
 }
 
-function check_radio_buttons_2() {
+function check_radio_buttons_two() {
     var ep2_yes = document.getElementById("ep2_yes");
     var ep2_no = document.getElementById("ep2_no");
 
@@ -79,7 +80,9 @@ function calculate_one_way() {
 
     var result = document.getElementById("result_block_third");
     result.style.display =" block";
-    
+    document.getElementById("result_of_two_way").innerHTML ="";
+    document.getElementById("result_of_one_way").innerHTML ="";
+
     document.getElementById("result_of_one_way").innerHTML ="Overtaking sight distance of one way vehical is "+ z1+z2+z3 +" m.";
 
 }
@@ -107,6 +110,8 @@ function calculate_two_way() {
     var result = document.getElementById("result_block_third");
     result.style.display =" block";
     
+    document.getElementById("result_of_two_way").innerHTML ="";
+    document.getElementById("result_of_one_way").innerHTML ="";
     document.getElementById("result_of_two_way").innerHTML ="Overtaking sight distance of Two way vehical is : "+ z1+z2+z3+z4 +" m.";
     
 }

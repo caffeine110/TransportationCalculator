@@ -123,6 +123,11 @@ $(document).ready(function() {
         v = parseFloat(v);
         r = parseFloat(r);
         
+
+        //error checking remaining isNaN() function 
+
+
+
         var u = 0.15 ;
         var z1 = (v*v) / ( 127*r ) - u ;
 
@@ -132,10 +137,15 @@ $(document).ready(function() {
 
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
-        
+
+        document.getElementById("result_of_super_elivation").innerHTML = "";
+        document.getElementById("result_of_extra_winding_of_road").innerHTML = "";
+        document.getElementById("result_of_set_back_distance").innerHTML = "";
+        document.getElementById("result_of_curve_resisrance").innerHTML = "";
+
         document.getElementById("result_of_super_elivation").innerHTML ="General super elivation is : "+ z1 +" m.";
-        document.getElementById("result_of_super_elivation").innerHTML ="Equilibrium super elivtion is : "+ z2 +" m.";
-        document.getElementById("result_of_super_elivation").innerHTML ="assign super elivation is : "+ z3 +" m.";
+        document.getElementById("result_of_super_elivation").innerHTML +="Equilibrium super elivtion is : "+ z2 +" m.";
+        document.getElementById("result_of_super_elivation").innerHTML +="\nAssign super elivation is : "+ z3 +" m.";
         
     }
     
@@ -156,18 +166,25 @@ $(document).ready(function() {
 
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
-                
-        document.getElementById("result_of_extra_winding_of_road").innerHTML ="extra winding of vehical is : "+ z1+z2 +" m.";
+        
+        //printing result 
+
+        document.getElementById("result_of_super_elivation").innerHTML = "";
+        document.getElementById("result_of_extra_winding_of_road").innerHTML = "";
+        document.getElementById("result_of_set_back_distance").innerHTML = "";
+        document.getElementById("result_of_curve_resisrance").innerHTML = "";
+
+        document.getElementById("result_of_extra_winding_of_road").innerHTML = "Extra winding of vehical is : "+z1+z2+" m.";
         
     }
 
     function calculate_set_back_distance() {
         
-        var v = document.getElementById("fourth_velocity_three").value;
+        var l = document.getElementById("fourth_length_three").value;
         var ssd = document.getElementById("fourth_ssd_three").value;
         var r = document.getElementById("fourth_radius_three").value;
         
-        v = parseFloat(v);
+        l = parseFloat(l);
         r = parseFloat(r);
         r = parseFloat(r);
         
@@ -185,18 +202,24 @@ $(document).ready(function() {
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
         
+
+        document.getElementById("result_of_super_elivation").innerHTML = "";
+        document.getElementById("result_of_extra_winding_of_road").innerHTML = "";
+        document.getElementById("result_of_set_back_distance").innerHTML = "";
+        document.getElementById("result_of_curve_resisrance").innerHTML = "";
+        
         if ( l > ssd ) {
             document.getElementById("result_of_set_back_distance").innerHTML ="Set back Distance is : "+ z1 +" m.";            
         }
         else if ( l < ssd ) {
             document.getElementById("result_of_set_back_distance").innerHTML ="Set back distance is : "+ z2 +" m.";            
-        }
+            }
         else {
             document.getElementById("result_of_set_back_distance").innerHTML =" "+ str ;                        
         }        
     }
 
-    function calculate_calculate_curve_resistance() {
+    function calculate_curve_resistance() {
 
         var t = document.getElementById("fourth_tractive_forse_four").value;
         var a = document.getElementById("fourth_turing_angle_four").value;
@@ -210,5 +233,10 @@ $(document).ready(function() {
         var result = document.getElementById("result_block_fourth");
         result.style.display =" block";
         
+        document.getElementById("result_of_super_elivation").innerHTML = "";
+        document.getElementById("result_of_extra_winding_of_road").innerHTML = "";
+        document.getElementById("result_of_set_back_distance").innerHTML = "";
+        document.getElementById("result_of_curve_resisrance").innerHTML = "";
+
         document.getElementById("result_of_curve_resisrance").innerHTML ="Curve Resistance is : "+ z1 +" m.";
     }
