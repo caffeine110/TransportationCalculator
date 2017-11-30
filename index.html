@@ -718,9 +718,134 @@
                 <h1 class="error-result" id="block_error"></h1>
             </div>
     </div>
+    <div class="block" id="block-sixth">
+        <button class="close-btn" onclick="close_all()">CLOSE</button>
+        <div class="block-header">
+            <h1>6). Verticle Curve : </h1>
+        </div>
+            <div class="block-wrapper">
+                <form onsubmit="return false" id="forms">
+                    <table class="option-table">
+                        
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
 
-    
-    
+
+                        <!-- design of summit curve 
+                                <input type="text" placeholder="eg. 100 m/s"  id="sixth_velocity_one" required />
+                        -->
+                        <tr>
+                            <td>
+                                Design of the Summit curve  :
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1.safe sight Distance ( m ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="1 m"  id="sixth_safe_sight_distance_one" />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2.OSD ( m ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="1 m"  id="sixth_safe_osd" />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. Deviation angle ( Difference between grades ) : 
+                            </td>
+                            <td>
+                                <input type="text" placeholder="angle"  id="sixth_daviation_one" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="findIt" value="Find It" onclick="calculate_transition_summit_curve() "/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <form onsubmit="return false" id="forms">
+                <table class="option-table">
+                    <tr class="option-table-heading">
+                        <th>Things</th>
+                        <th>Input</th>
+                    </tr>
+
+                        <!-- design of vally curve 
+                                <input type="text" placeholder="2"  id="fifth_winding_one" required />
+                        -->
+                        <tr>
+                            <td>
+                                Design of Vally Curve : 
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1. velocity of test vehical ( m/s ) :
+                            </td>
+                            <td>
+                                <input type="text" placeholder="eg. 100 m/s"  id="sixth_velocity_two" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2. Deviation angle ( Difference between grades ) : 
+                             </td>
+                            <td>
+                                <input type="text" placeholder="m"  id="sixth_daviation_two" required />
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3. safe sight Distance ( m ) : 
+                                
+                            </td>
+                            <td>
+                                <input type="text" placeholder="2"  id="sixth_safe_distance_two" required />
+                                    
+                            </td>
+                        </tr>                       
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="findIt" value="Find It" onclick="calculate_transition_vally_curve() "/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="result-block" id="result_block_sixth">
+
+                <h1 class="resultHeading"  onclick ="" > Result : <button class="btn btn-no" onclick="close_result_block_sixth()"> CLOSE</button> </h1>
+                <h1 class="result" id="verticle_summit_curve"></h1>
+                <h1 class="result" id="verticle_vally_curve"></h1>
+                <h1 class="result" id="verticle_vally_curve1"></h1>
+                <h1 class="result" id="verticle_vally_curve2"></h1>
+                <h1 class="result" id="verticle_vally_curve3"></h1>
+                
+            </div>
+            <div class="result-block" >
+                <h1 class="error-result" id="block_error"></h1>
+            </div>
+    </div>
 
     <footer class="footer-bottom">
         

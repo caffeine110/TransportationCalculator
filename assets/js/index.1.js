@@ -1,5 +1,9 @@
 $(document).ready(function() {
     
+
+
+
+    $('#result_block_one').css("display","none")
     
         $("#loader").fadeOut("slow");
     
