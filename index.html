@@ -95,137 +95,144 @@
         </table>
     </div>
   
-    <div class="block" id="block-oe">
+    <div class="block" id="block-one">
         <button class="close-btn" onclick="close_all()">CLOSE</button>
         <div class="block-header">
             <h1>1. Basic Elements Of Highway Geometric Design: </h1>
         </div>
         <div class="block-wrapper">
-
             <div class="buttons" id="basic_elements">
                 <button class="" id="camber_calculation" onclick="go_with_camber()">Camber Calculation</button>
                 <button class="" id="gradient_calculation" onclick="go_with_gradient()">Gradient Calculation</button>
                 <button class="" id="compeseted_gradient" onclick="go_with_compeseted()">Compeseted Gradient</button>
             </div>
            
+            <div class="wrapper" id="camber_calculation_block">
+                <form onsubmit="return false">
+                    <table class="option-table">
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
+                        <tr>
+                            <td>1.Type Of Camber : </td>
+                            <td>
+                                <label for="parabola">Parabola</label>
+                                <input type="radio" name="type" class="radioButtons" id="parabola_camber" value="ep1_yes" onchange="camber_type_change()" checked />
+                                &nbsp;&nbsp;
+                                <label for="ep1_no">Straight</label>
+                                <input type="radio" name="type" class="radioButtons" id="straight_camber"  value="ep1_no" onchange="camber_type_change()" />                   
+                            </td>
+                        </tr>
+                       
+                        <tr class="form_row_parabola_type">
+                            <td>Width Of The Road (w):</td>
+                            <td><input type="text" placeholder="eg. 100 m"  id="width_of_the_road_parabola" /></td>
+                        </tr>
+                        <tr class="form_row_parabola_type">
+                            <td>Slope of the road (n) :</td>
+                            <td><input type="text" placeholder="eg. 1 "  id="slope_of_the_road_parabola" /></td>
+                        </tr>
+                        <tr class="form_row_parabola_type">
+                            <td>Horizontal Component From road center (x) :</td>
+                            <td><input type="text" placeholder="eg. 2"  id="horizontal_compo_of_the_road_parabola" /></td>
+                        </tr>
+                        <tr class="form_row_parabola_type">
+                            <td></td>
+                            <td>
+                                <button  id="findIt" onclick="calculate_parabolic_camber()" >FindIt</button>
+                            </td>
+                        </tr>
+                        <tr class="form_row_straight_type">
+                            <td>Width Of The Road (w):</td>
+                            <td><input type="text" placeholder="eg. 100 "  id="width_of_the_road_straight" /></td>
+                        </tr>
+                        <tr class="form_row_straight_type">
+                            <td>Slope of the road (n) :</td>
+                            <td><input type="text" placeholder="eg. 1 "  id="slope_of_the_road_straight" /></td>
+                        </tr>
+                        <tr class="form_row_straight_type">
+                            <td></td>
+                            <td>
+                                <button  id="findIt" onclick="calculate_straight_camber()" >FindIt</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="result-block" >
+                    <h1 class="error-result" id="result_parabola_type"></h1>
+                    <h1 class="error-result" id="result_straight_type"></h1>
+                </div>
+            </div>
+            <div class="wrapper" id="gradient_calculation_block">
+                <form onsubmit="return false">
+                    <table class="option-table">
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
+                        <tr>
+                            <td> Do you want to take camber from previous calculation : </td>
+                            <td>
+                                <label for="decision">Yes</label>
+                                <input type="radio" name="type" class="radioButtons" id="decision_gradient_yes" value="ep1_yes" onchange="gradient_type_change()" />
+                                &nbsp;&nbsp;
+                                <label for="decision">No</label>
+                                <input type="radio" name="type" class="radioButtons" id="decision_gradient_no"  value="ep1_no" onchange="gradient_type_change()" checked/>                   
+                            </td>
+                        </tr>
+                        <tr class="form_row_gradient_no"> 
+                            <td>
+                                Enter the value of the camber (c):
+                            </td>
+                            <td><input type="text" placeholder="eg. 1 m "  id="camber_of_gradient_no" /></td>
+                        </tr>
+                        <tr class="form_row_gradient_no">
+                            <td></td>
+                            <td>
+                                <button  id="findIt" onclick="calculate_gradient()" >FindIt</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="result-block" >
+                    <h1 class="error-result" id="result_gradient_yes"></h1>
+                    <h1 class="error-result" id="result_gradient_no"></h1>
+                </div>
+            </div>
+            <div class="wrapper" id="compeseted_gradient_block">
+                <form onsubmit="return false">
+                    <table class="option-table">
+                        <tr class="option-table-heading">
+                            <th>Things</th>
+                            <th>Input</th>
+                        </tr>
+                        <tr class="form_row_gradient_no"> 
+                            <td>
+                                Enter radius of the curature in meter (R):
+                            </td>
+                            <td><input type="text" placeholder="eg. 1 m "  id="radius_of_curvature" /></td>
+                        </tr>
+                        <tr class="form_row_gradient_no">
+                            <td></td>
+                            <td>
+                                <button  id="findIt" onclick="calculate_compeseted_gradient()" >FindIt</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="result-block" >
+                    <h1 class="error-result" id="result_compeseted_gradient"></h1>
+                </div>
+            </div>
+
+
+
+
+
+            
            
-            <form onsubmit="return false" id="forms">
-                <table class="option-table">
-                    
-                    <tr class="option-table-heading">
-                        <th>Things</th>
-                        <th>Input</th>
-                    </tr>
-                    <!-- if 1 yes is checked-->
-
-                    <!--  1 st condition  parabolla -->                    
-                    <tr>
-                        <td>1). Camber Calculation ( C ): </td>
-                        <td>
-                            <label for="ep1_yes">Yes</label>
-                            <input type="radio" name="ep1_no" class="radioButtons" id="one_ep1_yes" value="ep1_yes" onchange="check_radio_buttons_first()"  />
-                            &nbsp;&nbsp;
-                            <label for="ep1_no">No</label>
-                            <input type="radio" name="ep1_no" class="radioButtons" id="one_ep1_no"  value="ep1_no" onchange="check_radio_buttons_first()" checked/>                   
-                        </td>
-                    </tr>
-                     
-                    <tr>
-                        <td class="row_hider_ep1_no"> Width of Road : </td>
-                        <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 100 m"  id="one_width_one" />    
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row_hider_ep1_no">Slpoe of the road : </td>   
-                        <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 0.2"  id="one_slope_one" />    
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td class="row_hider_ep1_no">Horizontal Component of road from center : </td>   
-                        <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 0.6"  id="one_horizontal_component_one" />    
-                        </td>
-                    </tr>
-                        <td>  </td>
-                        <td class="row_hider_ep1_no">
-                            <button  id="findIt" onclick="calculate_camber()" >FindIt</button>
-                                
-                        </td>
-                    </tr>   
-           
-
-                <!--  2nd condition straight-->
-                    <tr>
-                        <td class="row_hider_ep1_no"> Width of Road : </td>
-                        <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 100 m"  id="one_width_one" />    
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row_hider_ep1_no">Slpoe of the road : </td>   
-                        <td class="row_hider_ep1_no">
-                            <input type="text" placeholder="eg. 0.5"  id="one_slope_one" />    
-                        </td>
-                    </tr>
-                        <td></td>
-                        <td class="row_hider_ep1_no">
-                            <button id="findIt" onclick="calculate_camber()" >FindIt</button>
-                                
-                        </td>
-                    </tr> 
-                    <!-- if 2 yes is checked-->
-                    <tr>
-                        <td>2). Gradient Calculation ( G.) : </td>
-                        <td>
-                            <label for="ep2_yes">Yes</label>
-                            <input type="radio" name="ep2" class="radioButtons" id="one_ep2_yes" value="ep2_yes" onchange="check_radio_buttons_second()" required />
-                            &nbsp;&nbsp;
-                            <label for="ep2_no">No</label>
-                            <input type="radio" name="ep2" class="radioButtons" id="one_ep2_no"  value="ep2_no" onchange="check_radio_buttons_second()" checked />                   
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="row_hider_ep2_no"> Enter the value of camber :  </td>
-                        <td class="row_hider_ep2_no">
-                            <input type="text" placeholder="eg. 10"  id="one_camber_two" />    
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>  </td>
-                        <td class="row_hider_ep2_no">
-                                <button id="findIt" onclick="calculate_gradient()" >FindIt</button>
-                                
-                        </td>
-                    </tr>       <!-- end of 2 yes is checked-->
-                    <tr>
-                        <td>3). compensated Gradient  ( C.G.) : </td>
-                        <td>
-                            <label for="ep3_yes">Yes</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="one_ep3_yes" value="ep3_yes" onchange="check_radio_buttons_third()" required />
-                            &nbsp;&nbsp;
-                            <label for="ep3_no">No</label>
-                            <input type="radio" name="1ep" class="radioButtons" id="one_ep3_no"  value="ep3_no" onchange="check_radio_buttons_third()" checked />                   
-                        </td>
-                    </tr>
-                     
-                    <tr>
-                        <td class="row_hider_ep3_no"> Enter the value of radius of curvature : </td>
-                        <td class="row_hider_ep3_no">
-                            <input type="text" placeholder="eg. 100 m"  id="one_radius_three" />    
-                        </td>
-                    </tr>
-                        <td></td>
-                        <td class="row_hider_ep3_no">
-                            <button id="findIt" onclick="calculate_compensated_gradient()" >FindIt</button>                            
-                        </td>
-                    </tr>   <!-- end of 3 yes is checked-->
-                    
-                </table>
-                
-            </form>
+            
         </div>
         <div class="result-block" id="result_block_one">
             
@@ -868,5 +875,6 @@
     <script src="assets/js/index.4.js"></script>
     <script src="assets/js/index.5.js"></script>
     <script src="assets/js/index.6.js"></script>
+    <script src="assets/js/extra.out.of.mind.js"></script>
 </body>
 </html>

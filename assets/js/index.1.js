@@ -1,5 +1,33 @@
 $(document).ready(function() {
-    
+    form_row_shower_parabola_type = function() {
+        $('.form_row_parabola_type').css("display","");
+    } 
+    form_row_hider_parabola_type = function() {
+        $('.form_row_parabola_type').css("display","none");
+    } 
+    form_row_shower_straight_type = function() {
+        $('.form_row_straight_type').css("display","");
+    } 
+    form_row_hider_straight_type = function() {
+        $('.form_row_straight_type').css("display","none");
+    } 
+    form_row_hider_gradient_no = function() {
+        $('.form_row_gradient_no').css("display","none");
+    }
+    form_row_shower_gradient_no = function() {
+        $('.form_row_gradient_no').css("display","");
+    }
+
+
+    //calling for initial states
+    $("#gradient_calculation_block").css("display","none");
+    $("#compeseted_gradient_block").css("display","none");
+    $(".form_row_hiders").css("display","none");
+    form_row_hider_straight_type();
+
+
+
+
 
 
 
@@ -45,11 +73,215 @@ $(document).ready(function() {
              $('.row_hider').css("display","");
              $('.row_hider_ep3_no').css("display","none");
          }
-
-
 });
     
+
+function get_blocks_and_buttons() {
+
     
+}
+function go_with_camber() {
+    var camber_block =  document.getElementById("camber_calculation_block");
+    var gradient_block =  document.getElementById("gradient_calculation_block");
+    var compeseted_block =  document.getElementById("compeseted_gradient_block");
+    var camber_button = document.getElementById("camber_calculation");
+    var gradient_button = document.getElementById("gradient_calculation");
+    var compeseted_button = document.getElementById("compeseted_gradient");
+    
+    camber_button.style.backgroundColor="#c0392b";
+    camber_button.style.color="#fff";
+    gradient_button.style.backgroundColor="#fff";
+    gradient_button.style.color="#000";
+    compeseted_button.style.backgroundColor="#fff";
+    compeseted_button.style.color="#000";
+    camber_block.style.display="";
+    gradient_block.style.display="none";
+    compeseted_block.style.display="none";
+}
+function go_with_gradient(){ 
+    var camber_block =  document.getElementById("camber_calculation_block");
+    var gradient_block =  document.getElementById("gradient_calculation_block");
+    var compeseted_block =  document.getElementById("compeseted_gradient_block");
+    var camber_button = document.getElementById("camber_calculation");
+    var gradient_button = document.getElementById("gradient_calculation");
+    var compeseted_button = document.getElementById("compeseted_gradient");
+    
+    gradient_button.style.backgroundColor="#c0392b";
+    gradient_button.style.color="#fff";
+    camber_button.style.backgroundColor="#fff";
+    camber_button.style.color="#000";
+    compeseted_button.style.backgroundColor="#fff";
+    compeseted_button.style.color="#000";
+    camber_block.style.display="none";
+    gradient_block.style.display="";
+    compeseted_block.style.display="none";
+}
+function go_with_compeseted() {
+    var camber_block =  document.getElementById("camber_calculation_block");
+    var gradient_block =  document.getElementById("gradient_calculation_block");
+    var compeseted_block =  document.getElementById("compeseted_gradient_block");
+    var camber_button = document.getElementById("camber_calculation");
+    var gradient_button = document.getElementById("gradient_calculation");
+    var compeseted_button = document.getElementById("compeseted_gradient");
+    
+    compeseted_button.style.backgroundColor="#c0392b";
+    compeseted_button.style.color="#fff";
+    camber_button.style.backgroundColor="#fff";
+    camber_button.style.color="#000";
+    gradient_button.style.backgroundColor="#fff";
+    gradient_button.style.color="#000";
+    camber_block.style.display="none";
+    gradient_block.style.display="none";
+    compeseted_block.style.display="";
+}
+function camber_type_change() {
+    var ep1_yes = document.getElementById("parabola_camber");
+    var ep1_no = document.getElementById("straight_camber");
+    if( ep1_yes.checked ==  true)  { 
+        form_row_hider_straight_type();
+        form_row_shower_parabola_type();
+        document.getElementById("result_parabola_type").style.display = "";
+        document.getElementById("result_straight_type").style.display = "none";
+    }
+    else if(ep1_no.checked == true) {
+        form_row_hider_parabola_type();
+        form_row_shower_straight_type();
+        document.getElementById("result_parabola_type").style.display = "none";
+        document.getElementById("result_straight_type").style.display = "";
+        
+    } 
+}
+function calculate_parabolic_camber() {
+    var width = document.getElementById("width_of_the_road_parabola").value;
+    var slope = document.getElementById("slope_of_the_road_parabola").value;
+    var x = document.getElementById("horizontal_compo_of_the_road_parabola").value;
+
+    width = parseFloat(width);
+    slope = parseFloat(slope);
+    x = parseFloat(x);
+    
+
+    if(width==0 || isNaN(width) || slope==0 || isNaN(slope)) {
+        var result = document.getElementById("result_parabola_type");
+        result.style.display= "";
+        result.innerHTML = "Error: Values  are incorrect or zeroes" ;
+    }
+    else {
+
+        y = 2*x*x;
+
+        camber_parabola_type = y/(width*slope);
+
+        var result = document.getElementById("result_parabola_type");
+        result.style.display= "";
+        result.innerHTML = "The camber is "+camber_parabola_type+" meter.";
+
+    }
+}
+function calculate_straight_camber() {
+    var width = document.getElementById("width_of_the_road_straight").value;
+    var slope = document.getElementById("slope_of_the_road_straight").value;
+    width = parseFloat(width);
+    slope = parseFloat(slope);
+    if(width==0 || isNaN(width) || slope==0 || isNaN(slope)) {
+        var result = document.getElementById("result_parabola_type");
+        result.style.display= "";
+        result.innerHTML = "Error: Values  are incorrect or zeroes" ;
+    }
+    else {
+        camber_straight_type = width/(2*slope);
+        var result = document.getElementById("result_parabola_type");
+        result.style.display= "";
+        result.innerHTML = "The camber is "+camber_straight_type+" meter.";
+    }
+}
+function gradient_type_change() {
+    var ep1_yes = document.getElementById("decision_gradient_yes");
+    var ep1_no = document.getElementById("decision_gradient_no");
+    if( ep1_yes.checked ==  true)  { 
+        document.getElementById("result_gradient_yes").style.display = "none";
+        document.getElementById("result_gradient_no").style.display = "";
+        if(camber_parabola_type == 0.0) {
+            document.getElementById("result_gradient_no").innerHTML = "Camber not calculated yet.";
+        }
+        else {
+            global_g = 2 * camber_parabola_type ;
+            document.getElementById("result_gradient_no").innerHTML = "The gradient is " + (2*camber_parabola_type)+ " meter.";
+        } 
+        form_row_hider_gradient_no();
+    }
+    else if(ep1_no.checked == true) {
+        document.getElementById("result_gradient_yes").style.display = "";
+        document.getElementById("result_gradient_no").style.display = "none";
+        form_row_shower_gradient_no();
+    } 
+}
+function calculate_gradient() {
+    var camber = document.getElementById("camber_of_gradient_no").value;
+    camber = parseFloat(camber);
+    if(camber == 0 || isNaN(camber)) {
+        document.getElementById("result_gradient_no").style.display = "";
+        document.getElementById("result_gradient_no").innerHTML = "Enter valid value of the camber";
+    }
+    else {
+        global_g = 2 *camber;
+        document.getElementById("result_gradient_no").style.display = "";
+        document.getElementById("result_gradient_no").innerHTML = "The gradient is "+(2*camber)+" unit.";
+    }
+}
+function calculate_compeseted_gradient() {
+    var radius = document.getElementById("radius_of_curvature").value;
+    
+    
+    radius = parseFloat(radius);
+    
+    if(global_g == 0.0 || isNaN(global_g)) {
+        document.getElementById("result_compeseted_gradient").style.display = "";
+        document.getElementById("result_compeseted_gradient").innerHTML = "Calculate gradient first. Unknown gradient.";
+    }    
+    else if(radius == 0 || isNaN(radius)) {
+        document.getElementById("result_compeseted_gradient").style.display = "";
+        document.getElementById("result_compeseted_gradient").innerHTML = "Enter valid value of the camber";
+    }
+    else {
+    
+        var gc = Math.min(75/radius,(30+radius)/radius);
+
+        global_cg = global_g - gc ;
+        
+        if(global_cg >= 4) {
+            document.getElementById("result_compeseted_gradient").style.display = "";
+            document.getElementById("result_compeseted_gradient").innerHTML = "The compensated gradient is "+(global_cg)+"% .";
+        }
+        else {
+            document.getElementById("result_compeseted_gradient").style.display = "";
+            document.getElementById("result_compeseted_gradient").innerHTML = "The compensated gradient is 4% .";
+        
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     // FOR RADIO BUTTONSone_ep1_yes
 
 
