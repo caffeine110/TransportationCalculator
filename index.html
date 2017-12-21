@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/index.wrapper.css">
     <link rel="stylesheet" href="assets/css/index.blocks.css">
     <link rel="stylesheet" href="assets/css/index.footer.css">
+    <link rel="stylesheet" href="assets/css/extra.out.of.mind.css">
     <title>HOME | IEEE reseasrch </title>
 
 
@@ -93,12 +94,20 @@
         </table>
     </div>
   
-    <div class="block" id="block-one">
+    <div class="block" id="block-oe">
         <button class="close-btn" onclick="close_all()">CLOSE</button>
         <div class="block-header">
-            <h1>4.. horizontal curve : </h1>
+            <h1>1. Basic Elements Of Highway Geometric Design: </h1>
         </div>
         <div class="block-wrapper">
+
+            <div class="buttons" id="basic_elements">
+                <button class="" id="camber_calculation" onclick="go_with_camber()">Camber Calculation</button>
+                <button class="" id="gradient_calculation" onclick="go_with_gradient()">Gradient Calculation</button>
+                <button class="" id="compeseted_gradient" onclick="go_with_compeseted()">Compeseted Gradient</button>
+            </div>
+           
+           
             <form onsubmit="return false" id="forms">
                 <table class="option-table">
                     
@@ -106,8 +115,6 @@
                         <th>Things</th>
                         <th>Input</th>
                     </tr>
-
-
                     <!-- if 1 yes is checked-->
 
                     <!--  1 st condition  parabolla -->                    

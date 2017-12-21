@@ -1,0 +1,27 @@
+
+
+
+/*  added on 1142 21december 2017 because of ambiguity */
+
+/* don't blame me  I didn't want to code but they forced me
+
+Danger : Out Of Mind Code --> asprazz do not edit */
+#basic_elements {
+    text-align:center;
+    padding:50px 100px;
+}
+#basic_elements button {
+    border:none;
+    padding:5px 20px; 
+    border:1px solid #c0392b;
+    background-color:#fff;
+    margin-left:20px;
+    font-size:18px;
+    
+}
+#basic_elements button:hover {
+    border:1px solid #c0392b;
+    background-color:#c0392b;
+    color:#fff;
+    cursor:pointer;    
+}
